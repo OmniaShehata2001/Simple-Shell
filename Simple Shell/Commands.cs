@@ -555,7 +555,7 @@ namespace Simple_Shell
 
         private static void CreateFile(string Path)
         {
-            using (FileStream fs = File.Create($"{parentPath}{Path}"))
+            using (FileStream fs = File.Create($"{Path}"))
             {
                 byte[] info = new UTF8Encoding(true).GetBytes("This is some text in the file.");
                 // Add some information to the file.
@@ -603,6 +603,30 @@ namespace Simple_Shell
                     }
                 }
                 return FileContent;
+
+            }
+        }
+
+
+        public static string DeleteFile(List<Token> tokens)
+        {
+            if (tokens.Count() < 2)
+            {
+                return "Pad Paramters";
+            }
+            else
+            {
+
+                var file  =  tokens.Skip(1).FirstOrDefault().value;
+                if (File.Exists(file))
+                {
+                    File.Delete(file);
+                    return "Success";
+                }
+                else
+                {
+                    return "Not Exists";
+                }
 
             }
         }

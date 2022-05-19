@@ -40,6 +40,8 @@ namespace Simple_Shell
                             case "copy":
                                 break;
                             case "del":
+                                var deleteResult = Commands.DeleteFile(tokens);
+                                Console.WriteLine(deleteResult);
                                 break;
                             case "help":
                                 Commands.help(tokens);

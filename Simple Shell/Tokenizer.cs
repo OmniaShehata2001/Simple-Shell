@@ -145,7 +145,7 @@ namespace Simple_Shell
                     Tokens.Add(generateToken(arguments[0], TokenType.Command));
                     break;
                 case "del":
-                    Tokens.Add(generateToken(arguments[0], TokenType.Command));
+                    Tokens.AddRange(GenerateImportToken(GenerateImport(arguments)));
                     break;
                 case "help":
                     if (arguments.Length == 1)
